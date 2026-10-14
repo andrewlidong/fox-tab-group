@@ -1,0 +1,25 @@
+body.options { max-width: 720px; }
+body.options main { padding: 16px; }
+.topbar h1 { flex: 1; font-size: 15px; margin: 0; padding: 4px 0; }
+
+.section { padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+.section h2 { font-size: 14px; margin: 0 0 2px; }
+.section .check { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.section .inline { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.hint { color: var(--fg-2); margin: 0; font-size: 12px; }
+.form-actions.start { justify-content: flex-start; }
+
+.shortcut-row {
+  display: grid;
+  grid-template-columns: 1fr 180px auto;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 0;
+  border-top: 1px solid var(--border);
+}
+.shortcut-row:first-child { border-top: 0; }
+.shortcut-row .desc { font-size: 13px; }
+.shortcut-row .name { color: var(--fg-2); font-size: 11px; }
+.shortcut-row input { text-align: center; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.shortcut-row input.recording { outline: 2px solid var(--accent); }
+.shortcut-row .err { color: var(--danger); font-size: 12px; grid-column: 1 / -1; }

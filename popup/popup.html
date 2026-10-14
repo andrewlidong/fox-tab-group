@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fox Tab Groups</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="tabs" role="tablist">
+      <button class="tab" data-view="groups" role="tab">Groups</button>
+      <button class="tab" data-view="snapshots" role="tab">Snapshots</button>
+      <button class="tab" data-view="rules" role="tab">Rules</button>
+    </nav>
+    <div class="topbar-actions">
+      <button class="icon-btn" id="open-in-tab" title="Open in a full tab">⤢</button>
+      <button class="icon-btn" id="open-options" title="Settings &amp; shortcuts">⚙</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ------------------------------------------------------------ Groups -->
+    <section id="view-groups" class="view" hidden>
+      <div class="toolbar">
+        <input id="groups-filter" type="search" placeholder="Filter tabs…" aria-label="Filter tabs">
+        <button class="btn" data-action="auto-domain" title="Group tabs in this window by domain">By domain</button>
+        <button class="btn" data-action="apply-rules" title="Apply grouping rules to this window">Apply rules</button>
+        <button class="btn" data-action="save-window" title="Save this window as a snapshot">Save</button>
+        <button class="icon-btn" data-action="more-groups" title="More actions">⋯</button>
+      </div>
+      <div id="groups-more" class="menu" hidden>
+        <button data-action="collapse-all">Collapse all groups</button>
+        <button data-action="expand-all">Expand all groups</button>
+        <button data-action="merge-open">Merge groups with the same name</button>
+        <label class="menu-check"><input type="checkbox" id="show-all-windows"> Show all windows</label>
+      </div>
+      <div id="groups-list"></div>
+    </section>
+
+    <!-- --------------------------------------------------------- Snapshots -->
+    <section id="view-snapshots" class="view" hidden>
+      <div class="toolbar">
+        <input id="snapshots-filter" type="search" placeholder="Filter snapshots…" aria-label="Filter snapshots">
+        <button class="btn" data-action="save-window" title="Save this window as a snapshot">Save window</button>
+        <button class="btn" data-action="export-snapshots" title="Download all snapshots as JSON">Export</button>
+        <button class="btn" data-action="import-snapshots" title="Import snapshots from JSON">Import</button>
+      </div>
+      <div id="snapshots-list"></div>
+    </section>
+
+    <!-- ------------------------------------------------------------- Rules -->
+    <section id="view-rules" class="view" hidden>
+      <div class="toolbar">
+        <label class="switch" title="Turn automatic grouping on or off">
+          <input type="checkbox" id="auto-group-enabled">
+          <span>Auto-group</span>
+        </label>
+        <span class="spacer"></span>
+        <button class="btn primary" data-action="new-rule">+ Rule</button>
+        <button class="btn" data-action="export-rules" title="Download rules as JSON">Export</button>
+        <button class="btn" data-action="import-rules" title="Import rules from JSON">Import</button>
+      </div>
+      <form id="rule-form" class="card form" hidden>
+        <input type="hidden" name="id">
+        <div class="form-row">
+          <label>Name <input name="name" placeholder="e.g. Work mail"></label>
+          <label>Match <select name="matchType"></select></label>
+        </div>
+        <label>Pattern
+          <textarea name="pattern" rows="2" placeholder="example.com, *.example.org"></textarea>
+          <small class="hint" data-hint></small>
+        </label>
+        <div class="form-row">
+          <label>Group title <input name="groupTitle" placeholder="Defaults to the rule name"></label>
+          <label>Colour <div class="palette" data-palette></div><input type="hidden" name="color" value="grey"></label>
+        </div>
+        <div class="form-row">
+          <label class="check"><input type="checkbox" name="caseSensitive"> Case sensitive</label>
+          <label class="check"><input type="checkbox" name="enabled" checked> Enabled</label>
+        </div>
+        <div class="form-actions">
+          <span class="error" data-error></span>
+          <button type="button" class="btn" data-action="cancel-rule">Cancel</button>
+          <button type="submit" class="btn primary">Save rule</button>
+        </div>
+      </form>
+      <div id="rules-list"></div>
+    </section>
+  </main>
+
+  <footer id="status" class="status" hidden></footer>
+  <input type="file" id="file-input" accept="application/json,.json" hidden>
+
+  <script src="../shared/rules.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "fox-tab-groups",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Firefox extension: auto-group tabs with rules, save/restore tab groups as snapshots, manage open groups with shortcuts.",
+  "scripts": {
+    "test": "node --test",
+    "lint": "web-ext lint --source-dir . --ignore-files 'tests/**' 'node_modules/**' 'package*.json' 'README.md'",
+    "build": "web-ext build --source-dir . --artifacts-dir dist --overwrite-dest --ignore-files 'tests/**' 'node_modules/**' 'package*.json' 'dist/**'",
+    "start": "web-ext run --source-dir ."
+  },
+  "license": "MIT"
+}

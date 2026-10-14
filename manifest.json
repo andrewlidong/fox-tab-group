@@ -1,0 +1,92 @@
+{
+  "manifest_version": 3,
+  "name": "Fox Tab Groups",
+  "version": "1.0.0",
+  "description": "Auto-group tabs with custom rules, save and restore tab groups as snapshots, and manage open groups with shortcuts.",
+  "homepage_url": "https://github.com/andrewlidong/fox-tab-group",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "fox-tab-groups@andrewlidong.github.io",
+      "strict_min_version": "139.0",
+      "data_collection_permissions": { "required": ["none"] }
+    }
+  },
+  "icons": {
+    "48": "icons/icon.svg",
+    "96": "icons/icon.svg",
+    "128": "icons/icon.svg"
+  },
+  "permissions": ["tabs", "tabGroups", "storage", "menus"],
+  "background": {
+    "scripts": ["shared/rules.js", "background.js"]
+  },
+  "action": {
+    "default_title": "Fox Tab Groups",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon.svg",
+      "32": "icons/icon.svg"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": { "default": "Alt+Shift+F" },
+      "description": "Open the Fox Tab Groups popup"
+    },
+    "group-tabs": {
+      "suggested_key": { "default": "Alt+Shift+G" },
+      "description": "Group the selected tab(s): add them to the current tab's group, or create a new group"
+    },
+    "ungroup-tabs": {
+      "suggested_key": { "default": "Alt+Shift+U" },
+      "description": "Remove the selected tab(s) from their group"
+    },
+    "toggle-collapse-group": {
+      "suggested_key": { "default": "Alt+Shift+C" },
+      "description": "Collapse or expand the current tab's group"
+    },
+    "auto-group-by-domain": {
+      "suggested_key": { "default": "Alt+Shift+D" },
+      "description": "Auto-group all tabs in this window by domain"
+    },
+    "apply-rules": {
+      "suggested_key": { "default": "Alt+Shift+R" },
+      "description": "Apply grouping rules to all tabs in this window"
+    },
+    "new-tab-in-group": {
+      "suggested_key": { "default": "Alt+Shift+T" },
+      "description": "Open a new tab inside the current tab's group"
+    },
+    "close-group": {
+      "description": "Close the current tab's group"
+    },
+    "move-group-to-new-window": {
+      "description": "Move the current tab's group to a new window"
+    },
+    "collapse-all-groups": {
+      "description": "Collapse every group in this window"
+    },
+    "expand-all-groups": {
+      "description": "Expand every group in this window"
+    },
+    "toggle-pin-tab": {
+      "description": "Pin or unpin the current tab"
+    },
+    "duplicate-tab": {
+      "description": "Duplicate the current tab (stays in the same group)"
+    },
+    "save-window-snapshot": {
+      "description": "Save a snapshot of all tabs and groups in this window"
+    },
+    "activate-next-group": {
+      "description": "Jump to the next tab group"
+    },
+    "activate-previous-group": {
+      "description": "Jump to the previous tab group"
+    }
+  }
+}

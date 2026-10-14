@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fox Tab Groups – Settings</title>
+  <link rel="stylesheet" href="../popup/popup.css">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body class="tab-mode options">
+  <header class="topbar">
+    <h1>Fox Tab Groups – Settings</h1>
+    <div class="topbar-actions">
+      <button class="btn" id="open-manager">Open manager</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="card section">
+      <h2>Automatic grouping</h2>
+      <label class="check"><input type="checkbox" data-setting="autoGroupEnabled"> Group tabs automatically as they load, using the rules</label>
+      <label class="check"><input type="checkbox" data-setting="skipPinnedTabs"> Never group pinned tabs</label>
+      <label class="check"><input type="checkbox" data-setting="applyRulesOnStartup"> Apply rules to all open tabs when Firefox starts</label>
+      <label class="check"><input type="checkbox" data-setting="ungroupWhenNoRuleMatches"> When a tab stops matching every rule, remove it from its rule-made group</label>
+      <label class="inline">Default group colour
+        <select data-setting="defaultColor"></select>
+      </label>
+      <label class="inline">“Group by domain” only creates a group when a domain has at least
+        <input type="number" min="1" max="50" data-setting="domainGroupMinTabs" style="width:4.5em"> tab(s)
+      </label>
+    </section>
+
+    <section class="card section">
+      <h2>Snapshots</h2>
+      <label class="check"><input type="checkbox" data-setting="restoreInNewWindow"> Restore snapshots into a new window by default</label>
+      <label class="check"><input type="checkbox" data-setting="restoreDiscarded"> Restore tabs lazily (they load when you first click them)</label>
+    </section>
+
+    <section class="card section">
+      <h2>Keyboard shortcuts</h2>
+      <p class="hint">Click a shortcut field and press the key combination you want. Shortcuts need Ctrl or Alt (or ⌘ on macOS), optionally Shift, plus a key. Press Backspace to clear one.</p>
+      <div id="shortcuts"></div>
+      <div class="form-actions">
+        <button class="btn" id="reset-shortcuts">Reset all shortcuts to defaults</button>
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>Data</h2>
+      <p class="hint">Rules, snapshots and settings are stored locally in this Firefox profile. Export them to move to another profile or device.</p>
+      <div class="form-actions start">
+        <button class="btn" id="export-all">Export everything</button>
+        <button class="btn" id="import-all">Import…</button>
+        <span class="spacer"></span>
+        <button class="btn danger" id="reset-all">Delete all rules &amp; snapshots</button>
+      </div>
+      <p id="data-summary" class="hint"></p>
+    </section>
+
+    <section class="card section about">
+      <h2>About</h2>
+      <p>Fox Tab Groups brings rule-based auto-grouping, saved tab-group snapshots and group shortcuts to Firefox's native tab groups. Requires Firefox 139 or newer.</p>
+    </section>
+  </main>
+
+  <footer id="status" class="status" hidden></footer>
+  <input type="file" id="file-input" accept="application/json,.json" hidden>
+
+  <script src="../shared/rules.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
